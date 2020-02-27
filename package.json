@@ -1,0 +1,37 @@
+{
+  "name": "@redsoftware/react-hooks",
+  "version": "0.1.0",
+  "private": true,
+  "module": "dist/react-hooks.esm.js",
+  "scripts": {
+    "build": "rollup -c --silent",
+    "dev": "rollup -c -w"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "lodash-es": "4.x",
+    "react": "16.x"
+  },
+  "devDependencies": {
+    "@ampproject/rollup-plugin-closure-compiler": "^0.22.2",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-react": "^7.7.4",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react-app": "^6.1.0",
+    "husky": "^4.2.3",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "rollup": "^1.27.9",
+    "rollup-plugin-analyzer": "^3.2.2",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
