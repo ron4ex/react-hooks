@@ -1,14 +1,14 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import babel from 'rollup-plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import analyze from 'rollup-plugin-analyzer';
 import pkg from './package.json';
-import compiler from '@ampproject/rollup-plugin-closure-compiler';
+import typescript from '@rollup/plugin-typescript';
+import { eslint } from 'rollup-plugin-eslint';
 
 const isProduction = !process.env.ROLLUP_WATCH;
 
 export default {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   external: ['react', 'lodash-es'],
   output: {
     file: pkg.module,
@@ -17,14 +17,10 @@ export default {
     sourcemapExcludeSources: true,
   },
   plugins: [
+    eslint(),
     resolve(),
-    babel({
-      exclude: ['node_modules/**'],
-    }),
     commonjs(),
+    typescript(),
     !isProduction && analyze(),
-    compiler({
-      formatting: 'PRETTY_PRINT',
-    }),
   ],
 };

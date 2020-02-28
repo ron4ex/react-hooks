@@ -1,9 +1,9 @@
 import React from 'react';
 
-function useSelection(items = []) {
-  const [selected, setSelected] = React.useState([]);
+function useSelection<ItemType>(items: Array<ItemType> = []) {
+  const [selected, setSelected] = React.useState<ItemType[]>([]);
 
-  function select(checked, item) {
+  function select(checked: boolean, item: ItemType) {
     if (checked) {
       setSelected([...selected, item]);
     } else {
@@ -11,7 +11,7 @@ function useSelection(items = []) {
     }
   }
 
-  function selectAll(checked) {
+  function selectAll(checked: boolean) {
     if (!items.length) {
       return;
     }
@@ -23,7 +23,7 @@ function useSelection(items = []) {
     }
   }
 
-  function isSelected(id) {
+  function isSelected(id: string) {
     return Boolean(selected.find(item => item.id === id));
   }
 
