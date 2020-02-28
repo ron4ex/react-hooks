@@ -1,9 +1,11 @@
 import React from 'react';
 
-function useSelection<ItemType>(items: Array<ItemType> = []) {
-  const [selected, setSelected] = React.useState<ItemType[]>([]);
+//`T extends { id: string }` : Where `T` is generic, can be anything but will surely
+// have `id` of type string
+function useSelection<T extends { id: string }>(items: Array<T> = []) {
+  const [selected, setSelected] = React.useState<T[]>([]);
 
-  function select(checked: boolean, item: ItemType) {
+  function select(checked: boolean, item: T) {
     if (checked) {
       setSelected([...selected, item]);
     } else {
